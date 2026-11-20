@@ -1,0 +1,2 @@
+let cafes = 0;
+
