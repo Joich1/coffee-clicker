@@ -1,4 +1,5 @@
 let cafes = 0;
+let cps = 1;
 
 const contador = document.getElementById('contador');
 const btnCafe = document.getElementById('btncafe');
@@ -11,3 +12,8 @@ btnCafe.addEventListener('click', () =>{
     cafes += 1;
     attcafe();
 })
+
+setInterval(() => {
+    cafes += cps;
+    attcafe();
+}, 1);
