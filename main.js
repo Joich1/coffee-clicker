@@ -5,38 +5,77 @@ let qtdCoador = 0;
 let custoCoador = 10;
 let producaoCoador = 1;
 
-
 const contador = document.getElementById('contador');
 const cps = document.getElementById('cps');
 const btnCafe = document.getElementById('btncafe');
 
 const btnCoador = document.getElementById('btncoador');
-const coador = document.getElementById('ccoador'); 
-const totalCoador = document.getElementById('qtdcoador'); 
+const coador = document.getElementById('ccoador');
+const totalCoador = document.getElementById('qtdcoador');
 
-function attcafe(){
+function attcafe() {
     contador.textContent = cafes;
     cps.textContent = cafesporsegundo;
     coador.textContent = custoCoador;
     totalCoador.textContent = qtdCoador;
 }
 
-btnCafe.addEventListener('click', () =>{
+function salvarjogo() {
+    const estado = {
+        cafes: cafes,
+        qtdCoador: qtdCoador,
+        custoCoador: custoCoador
+    };
+
+    localStorage.setItem('coffeeClickerSave', JSON.stringify(estado));
+}
+
+function carregarJogo() {
+    const saveBruto = localStorage.getItem('coffeeClickerSave');
+    if (!saveBruto) return;
+
+    try {
+        const estado = JSON.parse(saveBruto);
+
+        if (typeof estado.cafes === 'number') {
+            cafes = estado.cafes;
+        }
+        if (typeof estado.qtdCoador === 'number') {
+            qtdCoador = estado.qtdCoador;
+        }
+        if (typeof estado.custoCoador === 'number') {
+            custoCoador = estado.custoCoador;
+        }
+    } catch (error) {
+        console.error('Erro ao carregar o save:', error);
+    }
+}
+
+btnCafe.addEventListener('click', () => {
     cafes += 1;
     attcafe();
-})
+});
 
-btnCoador.addEventListener('click', () =>{
-    if (cafes >= custoCoador){
+btnCoador.addEventListener('click', () => {
+    if (cafes >= custoCoador) {
         cafes -= custoCoador;
         qtdCoador += 1;
         cafesporsegundo = qtdCoador * producaoCoador;
         custoCoador = Math.ceil(custoCoador * 1.15);
         attcafe();
+        salvarjogo();
     }
-})
+});
+
+carregarJogo();
+cafesporsegundo = qtdCoador * producaoCoador;
+attcafe();
+
+setInterval(() => {
+    salvarjogo();
+}, 15000);
 
 setInterval(() => {
     cafes += cafesporsegundo;
     attcafe();
-}, 1);
+}, 1000);
