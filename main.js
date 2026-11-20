@@ -73,7 +73,7 @@ attcafe();
 
 setInterval(() => {
     salvarjogo();
-}, 15000);
+}, 5000);
 
 setInterval(() => {
     cafes += cafesporsegundo;
