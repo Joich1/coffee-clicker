@@ -39,4 +39,4 @@ btnCoador.addEventListener('click', () =>{
 setInterval(() => {
     cafes += cafesporsegundo;
     attcafe();
-}, 1000);
+}, 1);
