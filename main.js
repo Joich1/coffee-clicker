@@ -71,6 +71,21 @@ carregarJogo();
 cafesporsegundo = qtdCoador * producaoCoador;
 attcafe();
 
+
+
+const btnReset = document.getElementById('btnprogresso');
+
+function resetarJogo() {
+    localStorage.removeItem('coffeeClickerSave');
+    cafes = 0;
+    qtdCoador = 0;
+    custoCoador = 10;
+    cafesporsegundo = 0;
+    attcafe();
+}
+
+btnReset.addEventListener('click', resetarJogo);
+
 setInterval(() => {
     salvarjogo();
 }, 5000);
