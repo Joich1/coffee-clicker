@@ -35,7 +35,7 @@ const itensLoja = [
         quantidade: 0,
         btn: document.getElementById('btnexpresso'),
         custo2: document.getElementById('cexpresso'),
-        qtd2: document.getElementById('qtexpresso') // confere se no HTML tá assim mesmo
+        qtd2: document.getElementById('qtdexpresso') 
     }
 ];
 
