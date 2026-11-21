@@ -1,30 +1,68 @@
 let cafes = 0;
 let cafesporsegundo = 0;
 
-let qtdCoador = 0;
-let custoCoador = 10;
-let producaoCoador = 1;
-
 const contador = document.getElementById('contador');
 const cps = document.getElementById('cps');
 const btnCafe = document.getElementById('btncafe');
+const btnReset = document.getElementById('btnprogresso');
 
-const btnCoador = document.getElementById('btncoador');
-const coador = document.getElementById('ccoador');
-const totalCoador = document.getElementById('qtdcoador');
+const itensLoja = [
+    {
+        id: 'coador',
+        cBase: 10,
+        custo: 10,
+        producao: 1,
+        quantidade: 0,
+        btn: document.getElementById('btncoador'),
+        custo2: document.getElementById('ccoador'),
+        qtd2: document.getElementById('qtdcoador')
+    },
+    {
+        id: 'barista',
+        cBase: 50,
+        custo: 50,
+        producao: 5,
+        quantidade: 0,
+        btn: document.getElementById('btnbarista'),
+        custo2: document.getElementById('cbarista'),
+        qtd2: document.getElementById('qtdbarista')
+    },
+    {
+        id: 'expresso',
+        cBase: 200,
+        custo: 200,
+        producao: 20,
+        quantidade: 0,
+        btn: document.getElementById('btnexpresso'),
+        custo2: document.getElementById('cexpresso'),
+        qtd2: document.getElementById('qtexpresso') // confere se no HTML tá assim mesmo
+    }
+];
+
+function caulcularcps() {
+    cafesporsegundo = itensLoja.reduce((total, item) => {
+        return total + item.quantidade * item.producao;
+    }, 0);
+}
 
 function attcafe() {
     contador.textContent = cafes;
     cps.textContent = cafesporsegundo;
-    coador.textContent = custoCoador;
-    totalCoador.textContent = qtdCoador;
+
+    itensLoja.forEach((item) => {
+        item.custo2.textContent = item.custo;
+        item.qtd2.textContent = item.quantidade;
+    });
 }
 
 function salvarjogo() {
     const estado = {
         cafes: cafes,
-        qtdCoador: qtdCoador,
-        custoCoador: custoCoador
+        itens: itensLoja.map((item) => ({
+            id: item.id,
+            quantidade: item.quantidade,
+            custo: item.custo
+        }))
     };
 
     localStorage.setItem('coffeeClickerSave', JSON.stringify(estado));
@@ -40,51 +78,63 @@ function carregarJogo() {
         if (typeof estado.cafes === 'number') {
             cafes = estado.cafes;
         }
-        if (typeof estado.qtdCoador === 'number') {
-            qtdCoador = estado.qtdCoador;
-        }
-        if (typeof estado.custoCoador === 'number') {
-            custoCoador = estado.custoCoador;
+
+        if (Array.isArray(estado.itens)) {
+            estado.itens.forEach((itemSalvo) => {
+                const itemAtual = itensLoja.find((i) => i.id === itemSalvo.id);
+                if (itemAtual) {
+                    if (typeof itemSalvo.quantidade === 'number') {
+                        itemAtual.quantidade = itemSalvo.quantidade;
+                    }
+                    if (typeof itemSalvo.custo === 'number') {
+                        itemAtual.custo = itemSalvo.custo;
+                    }
+                }
+            });
         }
     } catch (error) {
         console.error('Erro ao carregar o save:', error);
     }
 }
 
+function comprarItem(item) {
+    if (cafes >= item.custo) {
+        cafes -= item.custo;
+        item.quantidade += 1;
+        item.custo = Math.ceil(item.custo * 1.15);
+        caulcularcps();
+        attcafe();
+        salvarjogo();
+    }
+}
+
+function resetarJogo() {
+    localStorage.removeItem('coffeeClickerSave');
+    cafes = 0;
+    cafesporsegundo = 0;
+
+    itensLoja.forEach((item) => {
+        item.quantidade = 0;
+        item.custo = item.cBase;
+    });
+
+    attcafe();
+}
+
+itensLoja.forEach((item) => {
+    item.btn.addEventListener('click', () => comprarItem(item));
+});
+
 btnCafe.addEventListener('click', () => {
     cafes += 1;
     attcafe();
 });
 
-btnCoador.addEventListener('click', () => {
-    if (cafes >= custoCoador) {
-        cafes -= custoCoador;
-        qtdCoador += 1;
-        cafesporsegundo = qtdCoador * producaoCoador;
-        custoCoador = Math.ceil(custoCoador * 1.15);
-        attcafe();
-        salvarjogo();
-    }
-});
+btnReset.addEventListener('click', resetarJogo);
 
 carregarJogo();
-cafesporsegundo = qtdCoador * producaoCoador;
+caulcularcps();
 attcafe();
-
-
-
-const btnReset = document.getElementById('btnprogresso');
-
-function resetarJogo() {
-    localStorage.removeItem('coffeeClickerSave');
-    cafes = 0;
-    qtdCoador = 0;
-    custoCoador = 10;
-    cafesporsegundo = 0;
-    attcafe();
-}
-
-btnReset.addEventListener('click', resetarJogo);
 
 setInterval(() => {
     salvarjogo();
