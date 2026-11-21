@@ -101,7 +101,7 @@ btnCafe.addEventListener('click', () => {
 });
 /* teste isso, vcai tirar depois*/
 btnCafe2.addEventListener('click', () =>{
-    cafes += 505050500p;
+    cafes += 1000000000000;
     attcafe();
 })
 
