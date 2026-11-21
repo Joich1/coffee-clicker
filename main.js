@@ -101,7 +101,7 @@ btnCafe.addEventListener('click', () => {
 });
 /* teste isso, vcai tirar depois*/
 btnCafe2.addEventListener('click', () =>{
-    cafes += 500000000;
+    cafes += 505050500p;
     attcafe();
 })
 
@@ -148,7 +148,7 @@ function carregarJogo() {
                     }
                     if (typeof estado.custoUpgradeClique === 'number') {
                         custoUpgradeClique = estado.custoUpgradeClique;
-}
+                    }
                 }
             });
         }
