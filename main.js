@@ -4,6 +4,7 @@ let cafesporsegundo = 0;
 const contador = document.getElementById('contador');
 const cps = document.getElementById('cps');
 const btnCafe = document.getElementById('btncafe');
+const btnCafe2 = document.getElementById('btncafe2');
 const btnReset = document.getElementById('btnprogresso');
 
 const itensLoja = [
@@ -48,6 +49,7 @@ function caulcularcps() {
 function attcafe() {
     contador.textContent = cafes;
     cps.textContent = cafesporsegundo;
+    document.title = `${cafes} Cafés - Coffee clicker`;
 
     itensLoja.forEach((item) => {
         item.custo2.textContent = item.custo;
@@ -108,6 +110,7 @@ function comprarItem(item) {
     }
 }
 
+/* teste isso, vcai tirar depois*/
 function resetarJogo() {
     localStorage.removeItem('coffeeClickerSave');
     cafes = 0;
@@ -129,6 +132,11 @@ btnCafe.addEventListener('click', () => {
     cafes += 1;
     attcafe();
 });
+/* teste isso, vcai tirar depois*/
+btnCafe2.addEventListener('click', () =>{
+    cafes += 500000000;
+    attcafe();
+})
 
 btnReset.addEventListener('click', resetarJogo);
 
