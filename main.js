@@ -1,6 +1,14 @@
 let cafes = 0;
 let cafesporsegundo = 0;
 
+let poderclique = 1;
+let custoUpgradeClique = 25;
+
+const btnUpgradeClique = document.getElementById('btnupgradeclique');
+const custoUpgradeClique2 = document.getElementById('cupgradeclique');
+const poderclique2 = document.getElementById('poderclique');
+
+
 const contador = document.getElementById('contador');
 const cps = document.getElementById('cps');
 const btnCafe = document.getElementById('btncafe');
@@ -51,15 +59,59 @@ function attcafe() {
     cps.textContent = cafesporsegundo;
     document.title = `${cafes} Cafés - Coffee clicker`;
 
+    custoUpgradeClique2.textContent = custoUpgradeClique;
+    poderclique2.textContent = poderclique;
+
     itensLoja.forEach((item) => {
         item.custo2.textContent = item.custo;
         item.qtd2.textContent = item.quantidade;
     });
 }
+function comprarItem(item) {
+    if (cafes >= item.custo) {
+        cafes -= item.custo;
+        item.quantidade += 1;
+        item.custo = Math.ceil(item.custo * 1.15);
+        caulcularcps();
+        attcafe();
+        salvarjogo();
+    }
+}
+
+function comprarUpgradeClique(){
+    if(cafes >= custoUpgradeClique){
+        cafes -= custoUpgradeClique;
+        poderclique += 1
+        custoUpgradeClique = Math.ceil(custoUpgradeClique * 1.15);
+        attcafe();
+        salvarjogo();
+    }
+}
+
+btnUpgradeClique.addEventListener('click', comprarUpgradeClique);
+
+
+itensLoja.forEach((item) => {
+    item.btn.addEventListener('click', () => comprarItem(item));
+});
+
+btnCafe.addEventListener('click', () => {
+    cafes += poderclique;
+    attcafe();
+});
+/* teste isso, vcai tirar depois*/
+btnCafe2.addEventListener('click', () =>{
+    cafes += 500000000;
+    attcafe();
+})
+
+
 
 function salvarjogo() {
     const estado = {
         cafes: cafes,
+        poderclique: poderclique,
+        custoUpgradeClique: custoUpgradeClique,
         itens: itensLoja.map((item) => ({
             id: item.id,
             quantidade: item.quantidade,
@@ -91,6 +143,12 @@ function carregarJogo() {
                     if (typeof itemSalvo.custo === 'number') {
                         itemAtual.custo = itemSalvo.custo;
                     }
+                    if (typeof estado.poderclique === 'number') {
+                        poderclique = estado.poderclique;
+                    }
+                    if (typeof estado.custoUpgradeClique === 'number') {
+                        custoUpgradeClique = estado.custoUpgradeClique;
+}
                 }
             });
         }
@@ -99,22 +157,13 @@ function carregarJogo() {
     }
 }
 
-function comprarItem(item) {
-    if (cafes >= item.custo) {
-        cafes -= item.custo;
-        item.quantidade += 1;
-        item.custo = Math.ceil(item.custo * 1.15);
-        caulcularcps();
-        attcafe();
-        salvarjogo();
-    }
-}
-
 /* teste isso, vcai tirar depois*/
 function resetarJogo() {
     localStorage.removeItem('coffeeClickerSave');
     cafes = 0;
     cafesporsegundo = 0;
+    poderclique = 1;
+    custoUpgradeClique = 25;
 
     itensLoja.forEach((item) => {
         item.quantidade = 0;
@@ -124,19 +173,6 @@ function resetarJogo() {
     attcafe();
 }
 
-itensLoja.forEach((item) => {
-    item.btn.addEventListener('click', () => comprarItem(item));
-});
-
-btnCafe.addEventListener('click', () => {
-    cafes += 1;
-    attcafe();
-});
-/* teste isso, vcai tirar depois*/
-btnCafe2.addEventListener('click', () =>{
-    cafes += 500000000;
-    attcafe();
-})
 
 btnReset.addEventListener('click', resetarJogo);
 
