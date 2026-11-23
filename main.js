@@ -7,6 +7,7 @@ let custoUpgradeClique = 25;
 const btnUpgradeClique = document.getElementById('btnupgradeclique');
 const custoUpgradeClique2 = document.getElementById('cupgradeclique');
 const poderclique2 = document.getElementById('poderclique');
+const removercps = document.getElementById('removercps');
 
 
 const contador = document.getElementById('contador');
@@ -62,6 +63,12 @@ function attcafe() {
     custoUpgradeClique2.textContent = custoUpgradeClique;
     poderclique2.textContent = poderclique;
 
+    btnUpgradeClique.hidden = !(cafes >= 1000);
+
+    removercps.addEventListener('click', () =>{
+        cafes = 0;
+    })
+
     itensLoja.forEach((item) => {
         item.custo2.textContent = item.custo;
         item.qtd2.textContent = item.quantidade;
@@ -84,7 +91,7 @@ function comprarItem(item) {
 function comprarUpgradeClique(){
         if(cafes >= custoUpgradeClique){
             cafes -= custoUpgradeClique;
-            poderclique += 1
+            poderclique = Math.ceil(poderclique * 1.15 )
             custoUpgradeClique = Math.ceil(custoUpgradeClique * 1.15);
             attcafe();
             salvarjogo();
