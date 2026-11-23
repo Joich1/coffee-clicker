@@ -19,8 +19,8 @@ const btnReset = document.getElementById('btnprogresso');
 const itensLoja = [
     {
         id: 'coador',
-        cBase: 10,
-        custo: 10,
+        cBase: 0,//10
+        custo: 0,
         producao: 1,
         quantidade: 0,
         btn: document.getElementById('btncoador'),
@@ -29,8 +29,8 @@ const itensLoja = [
     },
     {
         id: 'barista',
-        cBase: 50,
-        custo: 50,
+        cBase: 0,//50
+        custo: 0,
         producao: 5,
         quantidade: 0,
         btn: document.getElementById('btnbarista'),
@@ -39,8 +39,8 @@ const itensLoja = [
     },
     {
         id: 'expresso',
-        cBase: 200,
-        custo: 200,
+        cBase: 0,//200
+        custo: 0,
         producao: 20,
         quantidade: 0,
         btn: document.getElementById('btnexpresso'),
@@ -63,7 +63,7 @@ function attcafe() {
     custoUpgradeClique2.textContent = custoUpgradeClique;
     poderclique2.textContent = poderclique;
 
-    btnUpgradeClique.hidden = !(cafes >= 1000);
+    btnUpgradeClique.hidden = !(cafes >= custoUpgradeClique);
 
     removercps.addEventListener('click', () =>{
         cafes = 0;
@@ -173,7 +173,7 @@ function resetarJogo() {
     cafes = 0;
     cafesporsegundo = 0;
     poderclique = 1;
-    custoUpgradeClique = custoUpgradeClique;
+    custoUpgradeClique = 1000;
 
     itensLoja.forEach((item) => {
         item.quantidade = 0;
