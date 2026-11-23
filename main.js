@@ -6,6 +6,7 @@ let custoUpgradeClique = 1000;
 
 const btnUpgradeClique = document.getElementById('btnupgradeclique');
 const custoUpgradeClique2 = document.getElementById('cupgradeclique');
+
 const poderclique2 = document.getElementById('poderclique');
 const removercps = document.getElementById('removercps');
 
@@ -16,11 +17,14 @@ const btnCafe = document.getElementById('btncafe');
 const btnCafe2 = document.getElementById('btncafe2');
 const btnReset = document.getElementById('btnprogresso');
 
+const divcustoupgrade = document.getElementById('cupgradeclique2');
+divcustoupgrade.hidden = !(cafes >= custoUpgradeClique);
+
 const itensLoja = [
     {
         id: 'coador',
-        cBase: 0,//10
-        custo: 0,
+        cBase: 10,//10
+        custo: 10,
         producao: 1,
         quantidade: 0,
         btn: document.getElementById('btncoador'),
@@ -29,8 +33,8 @@ const itensLoja = [
     },
     {
         id: 'barista',
-        cBase: 0,//50
-        custo: 0,
+        cBase: 50,//50
+        custo: 50,
         producao: 5,
         quantidade: 0,
         btn: document.getElementById('btnbarista'),
@@ -39,8 +43,8 @@ const itensLoja = [
     },
     {
         id: 'expresso',
-        cBase: 0,//200
-        custo: 0,
+        cBase: 50,//200
+        custo: 50,
         producao: 20,
         quantidade: 0,
         btn: document.getElementById('btnexpresso'),
@@ -64,6 +68,7 @@ function attcafe() {
     poderclique2.textContent = poderclique;
 
     btnUpgradeClique.hidden = !(cafes >= custoUpgradeClique);
+    
 
     removercps.addEventListener('click', () =>{
         cafes = 0;
