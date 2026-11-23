@@ -2,7 +2,7 @@ let cafes = 0;
 let cafesporsegundo = 0;
 
 let poderclique = 1;
-let custoUpgradeClique = 25;
+let custoUpgradeClique = 1000;
 
 const btnUpgradeClique = document.getElementById('btnupgradeclique');
 const custoUpgradeClique2 = document.getElementById('cupgradeclique');
@@ -92,7 +92,7 @@ function comprarUpgradeClique(){
         if(cafes >= custoUpgradeClique){
             cafes -= custoUpgradeClique;
             poderclique = Math.ceil(poderclique * 1.15 )
-            custoUpgradeClique = Math.ceil(custoUpgradeClique * 1.15);
+            custoUpgradeClique = Math.ceil(custoUpgradeClique * 1.75);
             attcafe();
             salvarjogo();
         }
@@ -173,7 +173,7 @@ function resetarJogo() {
     cafes = 0;
     cafesporsegundo = 0;
     poderclique = 1;
-    custoUpgradeClique = 25;
+    custoUpgradeClique = custoUpgradeClique;
 
     itensLoja.forEach((item) => {
         item.quantidade = 0;
