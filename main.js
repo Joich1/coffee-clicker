@@ -78,14 +78,17 @@ function comprarItem(item) {
     }
 }
 
+
+
+
 function comprarUpgradeClique(){
-    if(cafes >= custoUpgradeClique){
-        cafes -= custoUpgradeClique;
-        poderclique += 1
-        custoUpgradeClique = Math.ceil(custoUpgradeClique * 1.15);
-        attcafe();
-        salvarjogo();
-    }
+        if(cafes >= custoUpgradeClique){
+            cafes -= custoUpgradeClique;
+            poderclique += 1
+            custoUpgradeClique = Math.ceil(custoUpgradeClique * 1.15);
+            attcafe();
+            salvarjogo();
+        }
 }
 
 btnUpgradeClique.addEventListener('click', comprarUpgradeClique);
