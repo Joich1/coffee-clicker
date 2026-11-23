@@ -40,13 +40,23 @@ const itensLoja = [
     },
     {
         id: 'expresso',
-        cBase: 50,//200
-        custo: 50,
+        cBase: 200,
+        custo: 200,
         producao: 20,
         quantidade: 0,
         btn: document.getElementById('btnexpresso'),
         custo2: document.getElementById('cexpresso'),
         qtd2: document.getElementById('qtdexpresso') 
+    },
+    {
+        id: 'demonio do infeno maluco 100% louco sem escrupulos',
+        cBase: 1000000,//200
+        custo: 1000000,
+        producao: 5000,
+        quantidade: 0,
+        btn: document.getElementById('btndemonio'),
+        custo2: document.getElementById('cdemonio'),
+        qtd2: document.getElementById('qtddemonio')
     }
 ];
 
@@ -113,7 +123,7 @@ btnCafe.addEventListener('click', () => {
 });
 /* teste isso, vcai tirar depois*/
 btnCafe2.addEventListener('click', () =>{
-    cafes += 1000000000000;
+    cafes += Math.ceil(1000000000000 * poderclique);
     attcafe();
 })
 
