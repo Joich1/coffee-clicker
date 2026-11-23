@@ -17,9 +17,6 @@ const btnCafe = document.getElementById('btncafe');
 const btnCafe2 = document.getElementById('btncafe2');
 const btnReset = document.getElementById('btnprogresso');
 
-const divcustoupgrade = document.getElementById('cupgradeclique2');
-divcustoupgrade.hidden = !(cafes >= custoUpgradeClique);
-
 const itensLoja = [
     {
         id: 'coador',
