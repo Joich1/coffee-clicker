@@ -20,8 +20,8 @@ const btnReset = document.getElementById('btnprogresso');
 const itensLoja = [
     {
         id: 'coador',
-        cBase: 10,//10
-        custo: 10,
+        cBase: 15,//10
+        custo: 15,
         producao: 1,
         quantidade: 0,
         btn: document.getElementById('btncoador'),
@@ -30,8 +30,8 @@ const itensLoja = [
     },
     {
         id: 'barista',
-        cBase: 50,//50
-        custo: 50,
+        cBase: 500,//50
+        custo: 500,
         producao: 5,
         quantidade: 0,
         btn: document.getElementById('btnbarista'),
@@ -40,8 +40,8 @@ const itensLoja = [
     },
     {
         id: 'expresso',
-        cBase: 200,
-        custo: 200,
+        cBase: 3500,
+        custo: 3500,
         producao: 20,
         quantidade: 0,
         btn: document.getElementById('btnexpresso'),
@@ -103,8 +103,8 @@ function comprarItem(item) {
 function comprarUpgradeClique(){
         if(cafes >= custoUpgradeClique){
             cafes -= custoUpgradeClique;
-            poderclique = Math.ceil(poderclique * 1.15 )
-            custoUpgradeClique = Math.ceil(custoUpgradeClique * 1.75);
+            poderclique = Math.ceil(poderclique * 1.50 )
+            custoUpgradeClique = Math.ceil(custoUpgradeClique * 1.50);
             attcafe();
             salvarjogo();
         }
