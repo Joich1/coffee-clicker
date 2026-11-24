@@ -49,6 +49,7 @@ const itensLoja = [
         qtd2: document.getElementById('qtdexpresso') 
     },
     {
+        //teste, vou tirar isso depois
         id: 'demonio do infeno maluco 100% louco sem escrupulos',
         cBase: 1000000,//200
         custo: 1000000,
