@@ -76,11 +76,6 @@ function attcafe() {
     poderclique2.textContent = poderclique;
 
     btnUpgradeClique.hidden = !(cafes >= custoUpgradeClique);
-    
-
-    removercps.addEventListener('click', () =>{
-        cafes = 0;
-    })
 
     itensLoja.forEach((item) => {
         item.custo2.textContent = item.custo;
@@ -127,6 +122,11 @@ btnCafe2.addEventListener('click', () =>{
     cafes += Math.ceil(1000000000000 * poderclique);
     attcafe();
 })
+
+removercps.addEventListener('click', () =>{
+        cafes = 0;
+        attcafe();
+    })
 
 
 
