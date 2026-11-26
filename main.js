@@ -22,7 +22,7 @@ const btnReset = document.getElementById('btnprogresso');
 const itensLoja = [
     {
         id: 'coador',
-        cBase: 15,//10
+        cBase: 15,//15
         custo: 15,
         producao: 1,
         quantidade: 0,
@@ -51,15 +51,34 @@ const itensLoja = [
         qtd2: document.getElementById('qtdexpresso') 
     },
     {
-        //teste, vou tirar isso depois
-        id: 'demonio do infeno maluco 100% louco sem escrupulos',
-        cBase: 1000000,//200
-        custo: 1000000,
-        producao: 5000,
+        id: 'banco',
+        cBase: 15000,
+        custo: 15000,
+        producao: 1500, //1,5mil
         quantidade: 0,
-        btn: document.getElementById('btndemonio'),
-        custo2: document.getElementById('cdemonio'),
-        qtd2: document.getElementById('qtddemonio')
+        btn: document.getElementById('btnbanco'),
+        custo2: document.getElementById('cbanco'),
+        qtd2: document.getElementById('qtdbanco') 
+    },
+    {
+        id: 'cafeteria',
+        cBase: 1000000,
+        custo: 1000000,
+        producao: 7500, //7,5mil
+        quantidade: 0,
+        btn: document.getElementById('btncafeteria'),
+        custo2: document.getElementById('ccafeteria'),
+        qtd2: document.getElementById('qtdcafeteria')
+    },
+    {
+        id: 'fazenda',
+        cBase: 23000000,
+        custo: 23000000,
+        producao: 44000, //44mil
+        quantidade: 0,
+        btn: document.getElementById('btnfazenda'),
+        custo2: document.getElementById('cfazenda'),
+        qtd2: document.getElementById('qtdfazenda')
     }
 ];
 
