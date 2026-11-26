@@ -67,6 +67,10 @@ function caulcularcps() {
     }, 0);
 }
 
+function formatarNumero(num) {
+    
+}
+
 function attcafe() {
     contador.textContent = cafes;
     cps.textContent = cafesporsegundo;
@@ -82,6 +86,7 @@ function attcafe() {
         item.qtd2.textContent = item.quantidade;
     });
 }
+
 function comprarItem(item) {
     if (cafes >= item.custo) {
         cafes -= item.custo;
@@ -92,9 +97,6 @@ function comprarItem(item) {
         salvarjogo();
     }
 }
-
-
-
 
 function comprarUpgradeClique(){
         if(cafes >= custoUpgradeClique){
