@@ -68,13 +68,17 @@ function caulcularcps() {
 }
 
 function formatarNumero(num) {
-    
+    if (num < 1000) return Math.floor(num).toString();
+    if (num < 1_000_000) return (num / 1000).toFixed(1).replace('.', ',') + 'K';
+    if (num < 1_000_000_000) return (num / 1_000_000).toFixed(1).replace('.', ',') + 'M';
+    if (num < 1_000_000_000_000) return (num / 1_000_000_000).toFixed(1).replace('.', ',') + 'B';
+    return (num / 1_000_000_000_000).toFixed(1).replace('.', ',') + 'T';
 }
 
 function attcafe() {
-    contador.textContent = cafes;
-    cps.textContent = cafesporsegundo;
-    document.title = `${cafes} Cafés - Coffee clicker`;
+    contador.textContent = formatarNumero(cafes);
+    cps.textContent = formatarNumero(cafesporsegundo);
+    document.title = `${formatarNumero(cafes)} Cafés - Coffee clicker`;
 
     custoUpgradeClique2.textContent = custoUpgradeClique;
     poderclique2.textContent = poderclique;
