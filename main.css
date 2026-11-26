@@ -9,47 +9,15 @@
 }
 
 body {
-    width: min(100% - 32px, 560px);
-    margin: 48px auto;
-    text-align: center;
+    width: min(100% - 32px, 900px);
+    margin: 32px auto;
 }
 
-p {
-    display: inline-flex;
-    gap: 6px;
-    align-items: center;
-    margin: 0 6px 24px;
-    padding: 12px 18px;
-    background: #fff;
-    border: 1px solid #e8dfd5;
-    border-radius: 10px;
-    color: #6d5948;
-}
-
-p span {
-    color: #38291f;
-    font-weight: 700;
-}
-
-#btncafe {
-    display: block;
-    width: 160px;
-    height: 160px;
-    margin: 0 auto 18px;
-    border: 5px solid #fff;
-    border-radius: 50%;
-    box-shadow: 0 4px 14px #38291f1a;
-    cursor: pointer;
-    transition: transform 120ms ease, box-shadow 120ms ease;
-}
-
-#btncafe:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 7px 18px #38291f26;
-}
-
-#btncafe:active {
-    transform: scale(0.97);
+.game-tools {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+    margin-bottom: 12px;
 }
 
 button {
@@ -74,51 +42,149 @@ button:focus-visible,
     outline-offset: 3px;
 }
 
+.game-tools button,
 #btncafe2 {
-    margin-bottom: 24px;
+    padding: 7px 10px;
+    color: #766453;
+    font-size: 0.85rem;
 }
 
-body > div {
+.stats {
     display: flex;
-    flex-wrap: wrap;
-    align-items: center;
     justify-content: center;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.stats p {
+    display: flex;
+    align-items: center;
     gap: 8px;
-    margin: 10px 0;
-    padding: 14px;
+    min-width: 150px;
+    margin: 0;
+    padding: 11px 16px;
     border: 1px solid #e8dfd5;
-    border-radius: 10px;
+    border-radius: 8px;
     background: #fff;
     color: #6d5948;
 }
 
-body > div span {
+.stats span {
     color: #38291f;
+    font-size: 1.1rem;
     font-weight: 700;
 }
 
-#btnprogresso {
-    display: block;
-    margin: 0 0 24px auto;
-    padding: 7px 10px;
-    border-color: transparent;
-    background: transparent;
-    color: #8a7767;
-    font-size: 0.85rem;
+.game-layout {
+    display: grid;
+    grid-template-columns: minmax(220px, 0.8fr) minmax(0, 1.2fr);
+    align-items: start;
+    gap: 16px;
 }
 
-#btnprogresso:hover {
-    border-color: #e8dfd5;
+.clicker-panel,
+.shop {
+    padding: 16px;
+    border: 1px solid #e8dfd5;
+    border-radius: 10px;
     background: #fff;
 }
 
-@media (max-width: 480px) {
+.clicker-panel {
+    display: flex;
+    min-height: 330px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+}
+
+.clicker-hint {
+    margin: 0;
+    color: #6d5948;
+}
+
+#btncafe {
+    display: block;
+    width: min(200px, 55vw);
+    aspect-ratio: 1;
+    border: 5px solid #fff;
+    border-radius: 50%;
+    background: #c27b3d;
+    object-fit: cover;
+    box-shadow: 0 4px 14px #38291f26;
+    cursor: pointer;
+    transition: transform 120ms ease, box-shadow 120ms ease;
+}
+
+#btncafe:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 7px 18px #38291f33;
+}
+
+#btncafe:active {
+    transform: scale(0.97);
+}
+
+.shop h2 {
+    margin: 0 0 12px;
+    color: #493627;
+    font-size: 1.2rem;
+}
+
+.shop-item {
+    margin-top: 8px;
+    padding: 8px;
+    border: 1px solid #e8dfd5;
+    border-radius: 8px;
+    background: #fbf9f6;
+}
+
+.shop-item button {
+    width: 100%;
+    text-align: left;
+}
+
+.shop-item #btnupgradeclique {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+}
+
+.shop-item #btnupgradeclique[hidden] {
+    display: none;
+}
+
+.shop-item:has(#btnupgradeclique[hidden]) {
+    display: none;
+}
+
+.item-info {
+    color: #766453;
+    font-size: 0.85rem;
+}
+
+.shop-item button span {
+    color: #493627;
+}
+
+@media (max-width: 620px) {
     body {
-        margin-top: 24px;
+        margin: 20px auto;
     }
 
-    body > div {
-        justify-content: flex-start;
-        text-align: left;
+    .game-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .clicker-panel {
+        min-height: 280px;
+    }
+
+    .stats p {
+        min-width: 0;
+        flex: 1;
+        justify-content: space-between;
     }
 }
