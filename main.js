@@ -42,13 +42,23 @@ const itensLoja = [
     },
     {
         id: 'expresso',
-        cBase: 3500,
-        custo: 3500,
+        cBase: 2500,
+        custo: 2500,
         producao: 20,
         quantidade: 0,
         btn: document.getElementById('btnexpresso'),
         custo2: document.getElementById('cexpresso'),
         qtd2: document.getElementById('qtdexpresso') 
+    },
+    {
+        id: 'maquina de expresso',
+        cBase: 5000,
+        custo: 5000,
+        producao: 50,
+        quantidade: 0,
+        btn: document.getElementById('btnmaquinaexpresso'),
+        custo2: document.getElementById('cmaquinaexpresso'),
+        qtd2: document.getElementById('qtdmaquinaexpresso') 
     },
     {
         id: 'banco',
@@ -93,7 +103,12 @@ function formatarNumero(num) {
     if (num < 1_000_000) return (num / 1000).toFixed(1).replace('.', ',') + 'K';
     if (num < 1_000_000_000) return (num / 1_000_000).toFixed(1).replace('.', ',') + 'M';
     if (num < 1_000_000_000_000) return (num / 1_000_000_000).toFixed(1).replace('.', ',') + 'B';
-    return (num / 1_000_000_000_000).toFixed(1).replace('.', ',') + 'T';
+    if (num < 1_000_000_000_000_000) return (num / 1_000_000_000_000).toFixed(1).replace('.', ',') + 'T';
+    if (num < 1_000_000_000_000_000_000) return (num / 1_000_000_000_000_000).toFixed(1).replace('.', ',') + "Qa"; 
+    if (num < 1_000_000_000_000_000_000_000) return (num / 1_000_000_000_000_000_000).toFixed(1).replace('.', ',') + "QI";
+    if (num < 1_000_000_000_000_000_000_000_000) return (num / 1_000_000_000_000_000_000_000).toFixed(1).replace('.', ',') + "Sx"; 
+    return (num / 1_000_000_000_000_000_000_000_000).toFixed(1).replace('.', ',') + "Sp"; 
+    
 }
 
 function attcafe() {
