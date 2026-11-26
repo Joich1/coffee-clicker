@@ -14,6 +14,8 @@ const removercps = document.getElementById('removercps');
 const contador = document.getElementById('contador');
 const cps = document.getElementById('cps');
 const btnCafe = document.getElementById('btncafe');
+
+/* VAI SAIR DEPOIS ISSO AQUI HEIIIIINIININININIINININININI*/ 
 const btnCafe2 = document.getElementById('btncafe2');
 const btnReset = document.getElementById('btnprogresso');
 
@@ -78,11 +80,10 @@ function formatarNumero(num) {
 function attcafe() {
     contador.textContent = formatarNumero(cafes);
     cps.textContent = formatarNumero(cafesporsegundo);
+    poderclique2.textContent = formatarNumero(poderclique)
     document.title = `${formatarNumero(cafes)} Cafés - Coffee clicker`;
 
     custoUpgradeClique2.textContent = custoUpgradeClique;
-    poderclique2.textContent = poderclique;
-
     btnUpgradeClique.hidden = !(cafes >= custoUpgradeClique);
 
     itensLoja.forEach((item) => {
