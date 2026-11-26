@@ -66,9 +66,9 @@ const itensLoja = [
         custo: 150000,
         producao: 260,
         quantidade: 0,
-        btn: document.getElementById('btnmaquinaexpresso'),
-        custo2: document.getElementById('cmaquinaexpresso'),
-        qtd2: document.getElementById('qtdmaquinaexpresso')
+        btn: document.getElementById('btncarrinhocafe'),
+        custo2: document.getElementById('ccarrinhocafe'),
+        qtd2: document.getElementById('qtdcarrinhocafe')
     },
     {
         id: 'banco',
