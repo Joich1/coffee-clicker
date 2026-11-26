@@ -119,7 +119,7 @@ function attcafe() {
 
     custoUpgradeClique2.textContent = custoUpgradeClique;
     btnUpgradeClique.hidden = !(cafes >= custoUpgradeClique);
-
+    
     itensLoja.forEach((item) => {
         item.custo2.textContent = item.custo;
         item.qtd2.textContent = item.quantidade;
