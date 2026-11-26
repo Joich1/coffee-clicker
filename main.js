@@ -119,7 +119,7 @@ function attcafe() {
 
     custoUpgradeClique2.textContent = custoUpgradeClique;
     btnUpgradeClique.hidden = !(cafes >= custoUpgradeClique);
-    
+
     itensLoja.forEach((item) => {
         item.custo2.textContent = item.custo;
         item.qtd2.textContent = item.quantidade;
@@ -176,6 +176,7 @@ function salvarjogo() {
         cafes: cafes,
         poderclique: poderclique,
         custoUpgradeClique: custoUpgradeClique,
+        ultimoSave: Date.now(),
         itens: itensLoja.map((item) => ({
             id: item.id,
             quantidade: item.quantidade,
@@ -190,11 +191,23 @@ function carregarJogo() {
     const saveBruto = localStorage.getItem('coffeeClickerSave');
     if (!saveBruto) return;
 
+    const adora = date.now();
+    const segundosFora = Math.floor((agora - estado.ultimoSave) / 1000)
+
+
+
     try {
         const estado = JSON.parse(saveBruto);
 
         if (typeof estado.cafes === 'number') {
             cafes = estado.cafes;
+        };
+
+        if(typeof estado.ultimoSave === 'number'){
+            const diferencaMS = date.now() - estado.ultimoSave;
+            if(diferencaMS > 0){
+                SegundosOffline = Math.floor(diferencaMS / 1000);
+            }
         }
 
         if (Array.isArray(estado.itens)) {
@@ -219,7 +232,15 @@ function carregarJogo() {
     } catch (error) {
         console.error('Erro ao carregar o save:', error);
     }
+
+    if(SegundosOffline > 0 && cafesporsegundo > 0){
+    const ganhoOffline = SegundosOffline * cafesporsegundo;
+    cafes += ganhoOffline;
 }
+attcafe();
+
+}
+
 
 /* teste isso, vcai tirar depois*/
 function resetarJogo() {
