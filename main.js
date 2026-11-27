@@ -99,6 +99,16 @@ const itensLoja = [
         btn: document.getElementById('btnfazenda'),
         custo2: document.getElementById('cfazenda'),
         qtd2: document.getElementById('qtdfazenda')
+    },
+    {
+        id: 'teste',
+        cBase: 1200000000,
+        custo: 1200000000,
+        producao: 5555000000,
+        quantidade: 0,
+        btn: document.getElementById('btnteste'),
+        custo2: document.getElementById('cteste'),
+        qtd2: document.getElementById('qtdteste')
     }
 ];
 
