@@ -62,8 +62,7 @@ const itensLoja = [
     },
     {
         id: 'carrinho de café na rua',
-        cBase: 150000,
-        custo: 150000,
+        
         producao: 260,
         quantidade: 0,
         btn: document.getElementById('btncarrinhocafe'),
